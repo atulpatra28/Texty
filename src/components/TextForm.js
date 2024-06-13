@@ -18,6 +18,42 @@ export default function TextForm(props) {
         setText(newText);
     }
 
+    const speak = () => {
+        let msg = new SpeechSynthesisUtterance();
+        msg.text = text;
+        window.speechSynthesis.speak(msg);
+    }
+
+    const handleInverseClick = () => {
+        console.log("inverse click is triggered");
+        let newtext = "";
+        for (let i = text.length - 1; i >= 0; i--) {
+            newtext += text[i];
+        }
+        setText(newtext);
+    };
+    const handleSwapClick = () => {
+        // Function to swap the case of each character in a string
+        const swapCase = (str) => {
+            return str
+                .split('') // Split the string into an array of characters
+                .map(char => {
+                    if (char === char.toUpperCase()) {
+                        return char.toLowerCase(); // Convert uppercase to lowercase
+                    } else {
+                        return char.toUpperCase(); // Convert lowercase to uppercase
+                    }
+                })
+                .join(''); // Join the array back into a string
+        };
+
+        // Swap the case of the current text
+        let newText = swapCase(text);
+        setText(newText);
+    }
+
+
+
     const handleOnChange= (event)=>{
         // console.log("On change");
         setText(event.target.value);
@@ -36,6 +72,9 @@ export default function TextForm(props) {
             <button className='btn btn-primary my-2' onClick={handleUpClick} >Convert to upper case</button>
             <button className='btn btn-primary mx-3 my-2' onClick={handleLowClick}>Convert to lower case</button>
             <button className='btn btn-primary mx-2 my-2' onClick={handleClearClick}>Clear text</button>
+            <button type="submit" onClick={speak} className="btn btn-warning mx-2 my-2">Speak</button>
+            <button className='btn btn-secondary mx-2 my-2' onClick={handleInverseClick}>Inverse</button>
+            <button className='btn btn-success mx-2 my-2' onClick={handleSwapClick}>Swap</button>
 
         </div>
         <div className="container my-3">.
