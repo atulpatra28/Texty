@@ -19,10 +19,14 @@ export default function TextForm(props) {
     }
 
     const speak = () => {
-        let msg = new SpeechSynthesisUtterance();
-        msg.text = text;
-        window.speechSynthesis.speak(msg);
-    }
+        if ('speechSynthesis' in window) {
+            let msg = new SpeechSynthesisUtterance();
+            msg.text = text;
+            window.speechSynthesis.speak(msg);
+        } else {
+            console.error('Speech Synthesis not supported in this browser.');
+        }
+    };
 
     const handleInverseClick = () => {
         console.log("inverse click is triggered");
