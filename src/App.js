@@ -4,7 +4,7 @@ import Nav from './components/Nav.js';
 import TextForm from './components/TextForm.js';
 import About from './components/About.js';
 import React,{useState} from 'react'
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   const[alert,setAlert]=useState(null);
