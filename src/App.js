@@ -29,10 +29,10 @@ function App() {
       },1000)
       setInterval(()=>{
         document.title='Texty is sexy...'
-      },1300)
+      },1400)
       setInterval(()=>{
         document.title='Install ASAP!!!'
-      },1600)
+      },1800)
     }
     
     else{
